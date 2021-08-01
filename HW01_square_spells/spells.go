@@ -17,6 +17,7 @@ func newSpells() spells {
 	spells = append(spells, s9)
 	spells = append(spells, s10)
 	spells = append(spells, s11)
+	spells = append(spells, s19)
 	spells = append(spells, s20)
 	spells = append(spells, s23)
 	spells = append(spells, s24)
@@ -66,6 +67,10 @@ func s10(x, y int) bool {
 
 func s11(x, y int) bool {
 	return x == 1 || x == 23 || y == 1 || y == 23
+}
+
+func s19(x, y int) bool {
+	return x == 0 || x == 24 || y == 0 || y == 24
 }
 
 func s20(x, y int) bool {
