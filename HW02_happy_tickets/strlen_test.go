@@ -14,7 +14,7 @@ func TestString(t *testing.T) {
 		out := reader.Out.Int()
 
 		res := Len(in)
-		fmt.Printf("case %d: want: %2d, have: %2d\n", reader.Idx-1, out, res)
+		fmt.Printf("case %d: want: %2d have: %2d PASS: %v\n", reader.Idx-1, out, res, res == out)
 
 		if res != out {
 			t.Fail()

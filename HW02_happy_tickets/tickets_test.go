@@ -15,7 +15,7 @@ func TestTickets(t *testing.T) {
 
 		res := Tickets(in)
 
-		fmt.Printf("case %2d: input: %2d want: %19d, have: %19d\n", reader.Idx-1, in, out, res)
+		fmt.Printf("case %2d: input: %2d want: %19d have: %19d\n", reader.Idx-1, in, out, res)
 		if res != out {
 			t.Fail()
 		}
