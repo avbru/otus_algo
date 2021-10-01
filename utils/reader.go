@@ -27,7 +27,7 @@ func (r *Reader) Next(t *testing.T) bool {
 	t.Helper()
 	f, err := os.Open(fmt.Sprintf("%s/test.%d.in", r.path, r.Idx))
 	if err != nil {
-		fmt.Printf("%s", err)
+		fmt.Printf("%s\n", err)
 		return false
 	}
 
