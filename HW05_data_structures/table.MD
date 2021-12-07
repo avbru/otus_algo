@@ -13,3 +13,6 @@
 | single | 680.3 ns/op | 6968 ns/op | 453134 ns/op | 34125830 ns/op |
 | vector | 222.8 ns/op | 5642 ns/op | 81511 ns/op  | 7418037 ns/op  |
 | factor | 611.9 ns/op | 3602 ns/op | 50544 ns/op  | 3887296 ns/op  |
+
+
+Get, Delete методы не отличаются для разных типов динамических массивов
