@@ -4,6 +4,9 @@ hw02:
 hw03:
 	go test -v ./HW03_chess_bits/fen*
 	go test -v ./HW03_chess_bits/bits*
+hw05:
+	go test -v ./HW05_data_structures/...
+	go test -v ./HW05_data_structures/... -bench=.
 hw17:
 	go test -v ./HW_17_rle/...
 	go build -o rle.exe ./HW_17_rle/...
