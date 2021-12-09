@@ -10,6 +10,8 @@ Algorithms and Data Structures homeworks.
 
 #### make hw05
 
+#### make hw06
+
 #### make hw17
 
 - run tests/comparison RLE vs RLE enhanced
