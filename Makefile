@@ -10,6 +10,9 @@ hw05:
 hw06:
 	go test -v ./HW06_heap_sort/.
 	go test -v ./HW06_heap_sort/... -bench=.
+hw16:
+	go test -v ./HW16_kmp/.
+	go test -v ./HW16_kmp/... -bench=.
 hw17:
 	go test -v ./HW_17_rle/...
 	go build -o rle.exe ./HW_17_rle/...
