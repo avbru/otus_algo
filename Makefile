@@ -16,3 +16,7 @@ hw16:
 hw17:
 	go test -v ./HW_17_rle/...
 	go build -o rle.exe ./HW_17_rle/...
+hw20:
+	mkdir -p .data
+	wget -nc -O .data/cdx-00000.gz https://commoncrawl.s3.amazonaws.com/cc-index/collections/CC-MAIN-2021-49/indexes/cdx-00000.gz || true
+	go test -v ./HW_20_hyperloglog/... -run DataSet
