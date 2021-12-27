@@ -34,3 +34,22 @@ func TestBST_Add(t *testing.T) {
 	//TODO
 	require.Equal(t, []int{10, 20, 30}, tr.List())
 }
+
+func TestBST_Draw(t *testing.T) {
+	tr := NewBST()
+	values := []int{40, 50, 60, 45, 20, 10, 36, 30, 22, 28, 12, 8}
+	for _, v := range values {
+		tr.Insert(v)
+	}
+	tr.Draw()
+	println("---------------------------------------------------------------------------")
+	tr.Delete(60)
+	tr.Draw()
+	println("---------------------------------------------------------------------------")
+	tr.Delete(50)
+	tr.Draw()
+	println("---------------------------------------------------------------------------")
+	tr.Delete(20)
+	tr.Draw()
+	require.IsIncreasing(t, tr.List())
+}
