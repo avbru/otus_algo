@@ -1,0 +1,1 @@
+[дампы по регионам](http://osm.sbin.ru/osm_dump/)
