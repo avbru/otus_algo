@@ -12,6 +12,9 @@ hw05:
 hw06:
 	go test -v ./HW06_heap_sort/.
 	go test -v ./HW06_heap_sort/... -bench=.
+hw08:
+	go test -v ./HW08_bst/.
+	go test -v ./HW08_bst/... -bench=.
 hw16:
 	go test -v ./HW16_kmp/.
 	go test -v ./HW16_kmp/... -bench=.
