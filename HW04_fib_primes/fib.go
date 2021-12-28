@@ -23,7 +23,7 @@ func FibIter(n int) string {
 	return a.String()
 }
 
-var prec = uint(7000000)
+const prec = uint(7000000)
 
 func FibGolden(n int) string {
 	if n < 1000000 {

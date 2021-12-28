@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func Primes(n int) int {
+func Primes(n int, isPrime func(n int) bool) int {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*5)
 	defer cancel()
 
@@ -16,7 +16,7 @@ func Primes(n int) int {
 		case <-ctx.Done():
 			return -1
 		default:
-			if IsPrimeBrute(j) {
+			if isPrime(j) {
 				q++
 			}
 		}
@@ -78,4 +78,21 @@ func IsPrimeOdd(n int) bool {
 		}
 	}
 	return true
+}
+
+func Eratosphen(n int) int {
+	primes := make([]bool, n+1)
+	count := 0
+	sqrt := int(math.Sqrt(float64(n)))
+	for p := 2; p <= n; p++ {
+		if !primes[p] {
+			count++
+			if p <= sqrt {
+				for j := p * p; j <= n; j += p {
+					primes[j] = true
+				}
+			}
+		}
+	}
+	return count
 }
