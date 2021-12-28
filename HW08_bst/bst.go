@@ -49,6 +49,9 @@ func (n *Node) add(v int) {
 }
 
 func (t *BST) Search(v int) *Node {
+	if t.root == nil {
+		return nil
+	}
 	return t.root.search(v)
 }
 
@@ -75,6 +78,28 @@ func (t *BST) Delete(v int) {
 	if node == nil {
 		return
 	}
+
+	//Delete root
+	if node.P == nil {
+		if node.L == nil && node.R == nil {
+			t.root = nil
+			return
+		}
+
+		if node.R != nil && node.L == nil {
+			t.root = node.R
+			t.root.L = node.L
+			t.root.P = nil
+			return
+		}
+
+		if node.L != nil && node.R == nil {
+			t.root = node.L
+			t.root.P = nil
+			return
+		}
+	}
+
 	node.delete()
 }
 
@@ -83,6 +108,12 @@ func (n *Node) delete() {
 	case n.L == nil && n.R == nil:
 		n.removeLeaf()
 	case n.L != nil && n.R != nil:
+		if n.R.L == nil {
+			n.Val, n.R.Val = n.R.Val, n.Val
+			n.R = n.R.R
+			return
+		}
+
 		left, val := n.R.L, n.R.Val
 		for left.L != nil {
 			if left.L.Val < val {
@@ -91,25 +122,20 @@ func (n *Node) delete() {
 			}
 		}
 
-		swap(left, n)
+		left.Val, n.Val = n.Val, left.Val //Swap values
 		left.delete()
 	default:
 		n.removeSingle()
 	}
 }
 
-func swap(n1, n2 *Node) {
-	n1, n2 = n2, n1
-}
-
 func (n *Node) removeLeaf() {
-	if n.P.L == n {
+	switch {
+	case n.P.L == n:
 		n.P.L = nil
-	}
-	if n.P.R == n {
+	case n.P.R == n:
 		n.P.R = nil
 	}
-	n.P = nil
 }
 
 func (n *Node) removeSingle() {
@@ -138,6 +164,9 @@ func (n *Node) removeSingle() {
 
 func (t *BST) List() []int {
 	var arr []int
+	if t.root == nil {
+		return nil
+	}
 	t.root.traverse(&arr)
 	return arr
 }
@@ -158,6 +187,10 @@ func (n *Node) traverse(arr *[]int) {
 
 func (t *BST) Draw() {
 	var arr []string
+	if t.root == nil {
+		println("empty tree")
+		return
+	}
 
 	t.root.draw(&arr)
 	for _, raw := range arr {
@@ -167,9 +200,10 @@ func (t *BST) Draw() {
 
 func (n *Node) draw(arr *[]string) {
 	lev := n.level()
+
 	//Ensure level string exists
 	if len(*arr) <= lev {
-		*arr = append(*arr, strings.Repeat("     ", 40))
+		*arr = append(*arr, strings.Repeat("     ", 100))
 	}
 
 	parentVal := 0
@@ -190,7 +224,7 @@ func (n *Node) draw(arr *[]string) {
 		}
 		//IS RIGHT
 		if n.P.R == n {
-			(*arr)[lev] = insert(pos+30/lev/lev+5*lev, (*arr)[lev], value, false)
+			(*arr)[lev] = insert(pos+30/lev/lev, (*arr)[lev], value, false)
 		}
 	}
 
@@ -205,6 +239,9 @@ func (n *Node) draw(arr *[]string) {
 }
 
 func (n *Node) level() int {
+	if n == nil {
+		return 0
+	}
 	count := 0
 	for n.P != nil {
 		count++
