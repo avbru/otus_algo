@@ -15,6 +15,8 @@ hw06:
 hw08:
 	go test -v ./HW08_bst/.
 	go test -v ./HW08_bst/... -bench=.
+hw10:
+	go test -v ./HW10_hash_table/... -bench=.
 hw16:
 	go test -v ./HW16_kmp/.
 	go test -v ./HW16_kmp/... -bench=.
