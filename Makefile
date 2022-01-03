@@ -17,6 +17,8 @@ hw08:
 	go test -v ./HW08_bst/... -bench=.
 hw10:
 	go test -v ./HW10_hash_table/... -bench=.
+hw11:
+	go test -v ./HW11_12_topology_sort/.
 hw16:
 	go test -v ./HW16_kmp/.
 	go test -v ./HW16_kmp/... -bench=.

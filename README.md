@@ -12,6 +12,10 @@ Algorithms and Data Structures homeworks.
 
 #### make hw06
 
+#### make hw11
+
+- HW11 + HW12
+
 #### make hw16
 
 #### make hw17
