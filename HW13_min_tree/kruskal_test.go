@@ -1,7 +1,6 @@
 package HW13_min_tree
 
 import (
-	"fmt"
 	"github.com/stretchr/testify/require"
 	"testing"
 )
@@ -22,11 +21,6 @@ var edges = [][3]int{
 
 func TestKruskal(t *testing.T) {
 	g := Graph{Edges: edges}
-	res := g.Kruskal()
-	for k, v := range g.Vertices {
-		fmt.Println(k, "vert:", v.Vertices, "pow:", v.Pow)
-	}
-
 	want := [][3]int{
 		{5, 0, 3},
 		{5, 2, 4},
@@ -35,5 +29,6 @@ func TestKruskal(t *testing.T) {
 		{7, 1, 4},
 		{9, 4, 6},
 	}
-	require.Equal(t, want, res)
+
+	require.Equal(t, want, g.Kruskal())
 }
