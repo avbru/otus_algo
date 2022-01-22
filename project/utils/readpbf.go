@@ -3,7 +3,6 @@ package utils
 import (
 	"context"
 	"github.com/paulmach/orb"
-	"github.com/paulmach/orb/project"
 	"github.com/paulmach/osm"
 	"github.com/paulmach/osm/osmpbf"
 	"os"
@@ -29,7 +28,7 @@ func ReadPBF(fName string) (map[osm.NodeID]*osm.Node, map[osm.WayID]*osm.Way, er
 		case *osm.Node:
 			//Cast to cartesian
 			p := orb.Point{e.Lon, e.Lat}
-			p = project.Point(p, project.WGS84.ToMercator)
+			//p = project.Point(p, project.WGS84.ToMercator)
 			e.Lon, e.Lat = p.Lon(), p.Lat()
 			nodes[e.ID] = e
 		case *osm.Way:
