@@ -34,3 +34,18 @@ func (d Data) ChessMoves() ChessMoves {
 	mask, _ := strconv.ParseUint(fields[1], 10, 64)
 	return ChessMoves{N: n, Mask: mask}
 }
+
+func (d Data) FloatInt() (float64, int) {
+	fields := strings.Fields(string(d))
+	num, _ := strconv.ParseFloat(fields[0], 64)
+	pow, _ := strconv.Atoi(fields[1])
+	return num, pow
+}
+
+func (d Data) Float() float64 {
+	n, err := strconv.ParseFloat(strings.TrimSpace(string(d)), 64)
+	if err != nil {
+		return 0
+	}
+	return n
+}
