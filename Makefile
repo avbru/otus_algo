@@ -23,6 +23,9 @@ hw13:
 	go test -v ./HW13_min_tree/.
 hw14:
 	go test -v ./HW14_dijkstra/.
+hw15:
+  go test -v ./HW15_bm/.
+  go test -v ./HW15_bm/... -bench=.
 hw16:
 	go test -v ./HW16_kmp/.
 	go test -v ./HW16_kmp/... -bench=.
