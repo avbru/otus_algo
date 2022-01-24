@@ -1,6 +1,23 @@
 package HW15_bm
 
-import "strings"
+import (
+	"strings"
+)
+
+func IndexBruteForce(s, p string) int {
+	for is := 0; is <= len(s)-len(p); is++ {
+		for ip := 0; ip < len(p); ip++ {
+			if s[is+ip] != p[ip] {
+				break
+			}
+			if ip == len(p)-1 {
+				return is
+			}
+		}
+	}
+
+	return -1
+}
 
 func BM(s, p string) int {
 	if len(s) == 0 || len(p) == 0 {
@@ -77,16 +94,42 @@ func suffixLength(a, b string) (i int) {
 	return
 }
 
-func IndexBruteForce(s, p string) int {
-	for is := 0; is <= len(s)-len(p); is++ {
-		for ip := 0; ip < len(p); ip++ {
-			if s[is+ip] != p[ip] {
-				break
-			}
-			if ip == len(p)-1 {
-				return is
-			}
+func IndexPrefix(s, p string) int {
+	if len(s) == 0 || len(p) == 0 {
+		return -1
+	}
+	prefix := prefixTable(p)
+	i := len(p) - 1
+	for i < len(s) {
+		j := len(p) - 1
+		for j >= 0 && s[i] == p[j] {
+			i--
+			j--
 		}
+		if j < 0 {
+			return i + 1
+		}
+		i += prefix[s[i]]
+	}
+	return -1
+}
+
+func IndexSuffix(s, p string) int {
+	if len(s) == 0 || len(p) == 0 {
+		return -1
+	}
+	suffix := suffixTable(p)
+	i := len(p) - 1
+	for i < len(s) {
+		j := len(p) - 1
+		for j >= 0 && s[i] == p[j] {
+			i--
+			j--
+		}
+		if j < 0 {
+			return i + 1
+		}
+		i += suffix[j]
 	}
 
 	return -1
